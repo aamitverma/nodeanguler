@@ -1,5 +1,5 @@
 var Todo = require('./models/todo');
-// getTodos function 
+
 function getTodos(res) {
     Todo.find(function (err, todos) {
 
@@ -12,11 +12,10 @@ function getTodos(res) {
     });
 };
 
-// exports module
 module.exports = function (app) {
 
     // api ---------------------------------------------------------------------
-    // get all todos checkbox with text
+    // get all todos
     app.get('/api/todos', function (req, res) {
         // use mongoose to get all todos in the database
         getTodos(res);
@@ -39,7 +38,7 @@ module.exports = function (app) {
 
     });
 
-    // delete a todo text
+    // delete a todo
     app.delete('/api/todos/:todo_id', function (req, res) {
         Todo.remove({
             _id: req.params.todo_id
